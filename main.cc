@@ -180,8 +180,55 @@ int main() {
 //MAP ENDS HERE
 
 
-	//Puzzle 1: find the blue shell🐚 and put it in the box
-	//Player will need to find the one blue shell out of the several shells in the small area alotted
+	//PUZZLE IDEAS: 
+	//Puzzle 1 is also the introduction to the game. It'll be simple
+	// and (hopefully) obvious enough for players to complete.
+
+	//Puzzle 1: The Blue Shell🐚
+	//Player will need to find the one blue shell out of the several shells in the area alotted
+	// and place it in the box next to the sign
+
+	//The puzzles are really tied to the world map so I will get more actual code here once the world map
+	// has been fleshed out a bit better
+
+	//Puzzle 2: The Locked Door
+	//There will be a locked door blocking the player's path.
+	//Player will need to search through several objects like coral/rocks/etc. to find the key
+	//Player will need to bring the key back to the door to unlock it and progress
+
+	//Puzzle 3: The crow
+	//Player has to find a "pretty thing" for a crow 🐦
+	// that pretty thing is a pearl ⚪ in an oyster
+	//The crow will not let the player pas until he's been given the pearl
+	/*
+	             🌟⭐💎
+	           ✨ 🐦 💍
+	            🪙 📿 ✨
+
+	          CROW
+	          *squak* shinies *squak*
+			  -----------------------
+	          bring me *squak* something pretty
+	*/
+	//For the dialogue side of thigs:
+	//After the second or third time you speak to him the game will start giving you hints:
+	//"dont oysters make pearls?"
+	//"I wonder where I could find an oyster"
+
+	//If the player is struggling to figure out how to open the oysters
+	//They'll get hints like:
+	//"How would I open this oyster?"
+	//"Is there anything I could use to smash this open?"
+	//"maybe a rock would work?"
+
+	//Once we've run out of hints it'll just repeat
+
+	//after we smash the oyster it'll leave the pearl ⚪ for the player to pick up
+	//the game is in color so it'll make more visual sense in color form
+	
+
+
+
 
 	/*const int ROWS = world_map.size();
 	const int COLS = world_map.at(0).size(); //MAKE SURE ALL ROWS ARE THE SAME SIZE OR BAD TIMES
