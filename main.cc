@@ -233,6 +233,6 @@ int main() {
 	movecursor(0, 0);
 	clearscreen();
 
-cout << " hi";
+
 }
 
