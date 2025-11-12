@@ -83,6 +83,8 @@ struct Inventory {
 int main() {
 	//vector for the class
 	vector<Inventory> InventoryItems;
+	int crowCount = 0;
+	int oysterCount = 0;
 
 	//MAP STARTS HERE
 
@@ -206,7 +208,7 @@ int main() {
 		if (get_world_location(row, col) == 'B') {
 			set_world_location(row, col, ' ');
 			movecursor(ROWS + 2, 0);
-			cout << "You picked up the winning shell!\n";
+			cout << "You picked up the blue shell!\n";
 			for (int i = 1; i < 31; i++) {
 				set_world_location(14, i, '~');
 			}
@@ -217,6 +219,191 @@ int main() {
 			InventoryItems.push_back(blueShell);
 		}
 		//END PUZZLE 1
+		//PUZZLE 2:
+		if (get_world_location(row, col) == 'L') {
+			//todo: maybe make this better
+			bool key = false;
+			for (int i = 0; i < InventoryItems.size(); i++) {
+				if (InventoryItems.at(i).name == "Key") {
+					key = true;
+				}
+			}
+			if (key) {
+				set_world_location(row, col, ' ');
+				movecursor(ROWS + 2, 0);
+				cout << "You unlocked🔓 the lock!\n";
+			} else {
+				if (c == 'A' or c == LEFT_ARROW) {
+					col += 1;
+				} else if (c == 'S' or c == RIGHT_ARROW) {
+					col -= 1;
+				} else if (c == 'W' or c == UP_ARROW) {
+					row += 1;
+				} else {
+					row -= 1;
+				}
+				cout << "It's locked🔒\n";
+			}
+		}
+		if (get_world_location(row, col) == 'K') {
+			set_world_location(row, col, ' ');
+			movecursor(ROWS + 2, 0);
+			cout << "You picked up the key!\n";
+			Inventory key;
+			key.name = "Key";
+			key.icon = "🔑";
+			key.color = YELLOW;
+			InventoryItems.push_back(key);
+		}
+		//END PUZZLE 2
+		//PUZZLE 3:
+		//TODO: make this less bad
+		if (get_world_location(row, col) == 'C') {
+			bool pearl = false;
+			for (int i = 0; i < InventoryItems.size(); i++) {
+				if (InventoryItems.at(i).name == "Pearl") {
+					pearl = true;
+				}
+			}
+			if (pearl) {
+				cout << "*squak* thank you!\n";
+				set_world_location(row, col, ' ');
+				movecursor(ROWS + 2, 0);
+				//TODO: remove pearl from inventory
+			} else {
+				if (crowCount > 3) crowCount = 0;
+				if (crowCount < 2) {
+					if (c == 'A' or c == LEFT_ARROW) {
+						col += 1;
+					} else if (c == 'S' or c == RIGHT_ARROW) {
+						col -= 1;
+					} else if (c == 'W' or c == UP_ARROW) {
+						row += 1;
+					} else {
+						row -= 1;
+					}
+					cout << BOLDBLACK << "CROW🐦:" << RESET << endl;
+					cout << "*squak* shinies *squak*" << endl;
+					cout << "bring me *squak* something pretty" << endl;
+					crowCount ++;
+					usleep(2'000'000);
+				} else if (crowCount == 2) {
+					if (c == 'A' or c == LEFT_ARROW) {
+						col += 1;
+					} else if (c == 'S' or c == RIGHT_ARROW) {
+						col -= 1;
+					} else if (c == 'W' or c == UP_ARROW) {
+						row += 1;
+					} else {
+						row -= 1;
+					}
+					cout << "dont oysters make pearls?" << endl;
+					crowCount ++;
+					usleep(2'000'000);
+				} else if (crowCount == 3) {
+					if (c == 'A' or c == LEFT_ARROW) {
+						col += 1;
+					} else if (c == 'S' or c == RIGHT_ARROW) {
+						col -= 1;
+					} else if (c == 'W' or c == UP_ARROW) {
+						row += 1;
+					} else {
+						row -= 1;
+					}
+					cout << "I wonder where I could find an oyster" << endl;
+					crowCount ++;
+					usleep(2'000'000);
+				}
+			}
+		}
+		if (get_world_location(row, col) == 'R') {
+			set_world_location(row, col, ' ');
+			movecursor(ROWS + 2, 0);
+			cout << "You picked a rock🪨!\n";
+			Inventory rock;
+			rock.name = "Rock";
+			rock.icon = "🪨";
+			rock.color = BOLDBLACK;
+			InventoryItems.push_back(rock);
+		}
+		if (get_world_location(row, col) == 'O') {
+			bool rock = false;
+			for (int i = 0; i < InventoryItems.size(); i++) {
+				if (InventoryItems.at(i).name == "Rock") {
+					rock = true;
+				}
+			}
+			if (rock) {
+				set_world_location(row, col, ' ');
+				movecursor(ROWS + 2, 0);
+				cout << "You broke open the oyster🦪!\n";
+				cout << "You obtained a Pearl⚪!\n";
+				Inventory pearl;
+				pearl.name = "Pearl";
+				pearl.icon = "⚪";
+				pearl.color = BOLDWHITE;
+				InventoryItems.push_back(pearl);
+			} else {
+				//TODO: figure out why the text wont go past the first one
+				if (oysterCount > 4) oysterCount = 0;
+				if (oysterCount < 2) {
+					if (c == 'A' or c == LEFT_ARROW) {
+						col += 1;
+					} else if (c == 'S' or c == RIGHT_ARROW) {
+						col -= 1;
+					} else if (c == 'W' or c == UP_ARROW) {
+						row += 1;
+					} else {
+						row -= 1;
+					}
+					cout << "It's an oyster🦪\n";
+					crowCount ++;
+					usleep(2'000'000);
+				} else if (crowCount == 2) {
+					if (c == 'A' or c == LEFT_ARROW) {
+						col += 1;
+					} else if (c == 'S' or c == RIGHT_ARROW) {
+						col -= 1;
+					} else if (c == 'W' or c == UP_ARROW) {
+						row += 1;
+					} else {
+						row -= 1;
+					}
+					cout << "How would I open this oyster?" << endl;
+					crowCount ++;
+					usleep(2'000'000);
+				} else if (crowCount == 3) {
+					if (c == 'A' or c == LEFT_ARROW) {
+						col += 1;
+					} else if (c == 'S' or c == RIGHT_ARROW) {
+						col -= 1;
+					} else if (c == 'W' or c == UP_ARROW) {
+						row += 1;
+					} else {
+						row -= 1;
+					}
+					cout << "Is there anything I could use to smash this open?" << endl;
+					crowCount ++;
+					usleep(2'000'000);
+				}  else if (crowCount == 4) {
+					if (c == 'A' or c == LEFT_ARROW) {
+						col += 1;
+					} else if (c == 'S' or c == RIGHT_ARROW) {
+						col -= 1;
+					} else if (c == 'W' or c == UP_ARROW) {
+						row += 1;
+					} else {
+						row -= 1;
+					}
+					cout << "maybe a rock would work?" << endl;
+					crowCount ++;
+					usleep(2'000'000);
+				}
+			}
+		}
+
+		//END PUZZLE 3
+
 
 		//idk why but when i comment out the code in asterisks it breaks the program lol
 		//specifically it says there's mismatched curly braces
