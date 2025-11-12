@@ -65,10 +65,6 @@ void print_world(size_t player_row, size_t player_col) {
 			else if (c == 'x') cout << BOLDRED  << c << RESET;
 			else
 				cout << c;
-			if (row == player_row and col == player_col) cout << "@";
-			else if (c == '*') cout << GREEN << c << RESET;
-			else
-				cout << c ;
 		}
 		cout << endl;
 	}
