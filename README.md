@@ -1,7 +1,8 @@
 # rpg-project
+<<<<<<< HEAD
 Haven - Puzzles
 Tran - Colors & Combat system
-Cook - World Map.
+Cook and Ugaz - World Map.
 
 For the World Map criteria we have one map that the player is capable of moving around and interacting with.
 In the combat system, we used AI to complete the project.
@@ -28,5 +29,3 @@ Loops are used to run the game. The while() loops reads key strokes, runs the co
 Functions are used to get the character at a location, set the character at a location, and print the world map to the screen.
 
 We used a struct to make the inventory system. The member variables are the name, icon, and color. These describe the characteristics of the items that the player picks up in the game. There's currently one member function, which prints the items in the player's inventory to the screen.
-
-
